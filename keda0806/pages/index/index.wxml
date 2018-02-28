@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="page">
+  <view class="user-card">
+    <image class="user-card__bg" src="../../assets/img/photo-bg.png" mode="aspectFill"></image>
+    <view class="user-card__info">
+      <image class="user-card__head" src="{{ userInfo.avatarUrl }}" bindtap='getUserInfo'></image>
+      <text class="user-card__name">{{ userInfo.nickName }}</text>
+      <text wx:if="{{!completeInfo}}" class="user-card__name" bindtap="completeInfo">(补全个人信息)</text>
+    </view>
+    <view class="user-card__links">
+      <view class="user-card__linkItem" bindtap="openSetting">
+        <label class="user-card__linkLabel">同窗三载,十年重逢 </label>
+        <text class="user-card__linkValue">{{ todosUncompletedCount }}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="charts-card">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell" wx:for="{{ students }}" wx:key="index" bindtap="itemClick" data-phone="{{item.phone}}" data-name="{{item.name}}" data-nickname="{{item.nickName}}" data-city="{{item.city}}" data-job="{{item.job}}" >
+        <view class="weui-cell__hd">
+          <image src="{{item.avatarUrl}}" class='student-head'></image>
+        </view>
+        <view class='item-info'>
+          <view class="name-style">{{ item.name }} ({{ item.nickName }})　{{ item.city }}-{{ item.job }} </view>
+          <view class="phone-style">{{ item.phone }}</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
